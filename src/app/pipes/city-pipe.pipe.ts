@@ -6,16 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CityPipePipe implements PipeTransform {
 
   transform(cities: any[], cityName: string): any {
-    if(!cities) {
-      return [];
+    if(cityName) {
+      return cities.filter(city => city.name.toLocaleUpperCase().startsWith(cityName.toLocaleUpperCase()))
     }
-    if(!cityName) {
-      return cities;
-    }
-    cityName = cityName.toLowerCase();
-    return cities.filter( it => {
-      return it.toLowerCase().includes(cityName);
-    });
+    return cities;
   }
 
 }

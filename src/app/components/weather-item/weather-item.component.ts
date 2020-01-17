@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-weather-item',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather-item.component.css']
 })
 export class WeatherItemComponent implements OnInit {
+  @Input('weather') weather: object;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  onSelect(weather) {
+    this.router.navigate(['/home', weather.id])
+  }
 
   ngOnInit() {
   }

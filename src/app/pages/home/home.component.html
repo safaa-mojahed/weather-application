@@ -1,1 +1,20 @@
 <p>home works!</p>
+<h1>the weather in {{ weather?.name }}, {{ weather?.sys.country }}</h1>
+<h1>{{ weather?.main.temp }}  &#176;F</h1>
+<p>{{ weather?.weather[0].description }}</p>
+<p>{{ weather?.main.temp_min }}</p>
+<p>{{ weather?.main.temp_max }}</p>
+
+
+<h1>forecast</h1>
+<div *ngFor="let weather of cityForecast">
+    <app-weather-item [weather] = "weather"></app-weather-item>
+</div>
+<form>
+    <label for="cities">search by city name</label>
+    <input type="text" [(ngModel)] = "cityName" name="cityName">
+</form>
+<h1>all cities</h1> 
+<div *ngFor = "let city of aroundCities?.list | cityPipe:cityName">
+    <p (click)="onCityClick(city.id)" >{{city.name}}</p>
+</div>

@@ -1,1 +1,5 @@
-<p>view works!</p>
+<div *ngFor="let weather of cityForecast">
+    <div *ngIf = "weatherId == weather.id">
+        <p>{{weather.date}}</p>
+    </div>
+</div>

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CitypipeComponent } from './citypipe/citypipe.component';
-import { CityPipePipe } from './city-pipe.pipe';
+import { CityPipePipe } from 'src/app/pipes/city-pipe.pipe';
 
 
 
 @NgModule({
-  declarations: [CitypipeComponent, CityPipePipe],
+  declarations: [ CityPipePipe ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[CityPipePipe]
 })
 export class PipesModule { }
