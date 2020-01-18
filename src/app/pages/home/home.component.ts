@@ -16,15 +16,17 @@ export class HomeComponent implements OnInit {
   lon;
   count;
   weather;
-  weatherUrl;
-  forecastUrl = environment.apiUrl + '/forecast';
-  cityUrl;
+  date;
+  dayName;
+  currentDay;
+  currenDate;
   forecast;
   aroundCities;
   cityWeather;
   cityForecast: Weather[] = [];
   forecastWeather: Weather[] = [];
   idForecast: Weather[] = [];
+  days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   constructor(private weatherService: WeatherService) { }
 
@@ -37,13 +39,14 @@ export class HomeComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lon = position.coords.longitude;
-        this.weatherUrl = environment.apiUrl + '/weather';
-        this.cityUrl = environment.apiUrl + '/find';
 
         try {
-          this.count = 0;
-          this.weatherService.getWeatherDataByCoords(this.weatherUrl, this.lat, this.lon, this.count).subscribe(data => {
+          this.count = 100;
+          this.weatherService.getWeatherDataByCoords(environment.apiUrl+'/weather', this.lat, this.lon, this.count).subscribe(data => {
             this.weather = data;
+            this.currenDate = new Date()
+            this.currentDay = this.days[this.currenDate.getDay()];
+            console.log(this.weather);
           });
         }
         catch(error) {
@@ -52,7 +55,7 @@ export class HomeComponent implements OnInit {
 
         try {
           this.count = 0;
-            this.weatherService.getWeatherDataByCoords(this.forecastUrl, this.lat, this.lon, this.count).subscribe(data => {
+            this.weatherService.getWeatherDataByCoords(environment.apiUrl+'/forecast', this.lat, this.lon, this.count).subscribe(data => {
             this.forecast = data;
             this.forecastWeather = this.getfourDays(this.forecast);
             this.weatherService.setCityForecast(this.forecastWeather);
@@ -64,7 +67,7 @@ export class HomeComponent implements OnInit {
 
         try {
           this.count = 20;
-          this.weatherService.getWeatherDataByCoords(this.cityUrl, this.lat, this.lon, this.count).subscribe(data => {
+          this.weatherService.getWeatherDataByCoords(environment.apiUrl+'/find', this.lat, this.lon, this.count).subscribe(data => {
             this.aroundCities = data;
           });
         }
@@ -82,7 +85,7 @@ export class HomeComponent implements OnInit {
   onCityClick(id): void {
     try {
       this.count = 0;
-      this.weatherService.getWeatherDataByCoordsAndId(this.forecastUrl, this.count, id).subscribe(data => {
+      this.weatherService.getWeatherDataByCoordsAndId(environment.apiUrl+'/forecast', this.count, id).subscribe(data => {
         this.cityWeather = data;
         this.idForecast = this.getfourDays(this.cityWeather);
         this.weatherService.setCityForecast(this.idForecast);
@@ -95,17 +98,21 @@ export class HomeComponent implements OnInit {
 
   getfourDays(weatherArray) {
     this.cityForecast = [];
-    for(let i = 0; i<32; i+=8) {
+    for(let i = 8; i<40; i+=8) {
+      this.date = new Date(weatherArray.list[i].dt_txt);
+      this.dayName = this.days[this.date.getDay()];
       const temporary:  Weather =
         {
           id: i/8,
           date: weatherArray.list[i].dt_txt,
-          icon: weatherArray.list[i].weather[0].icon,
-          maxTemp: weatherArray.list[i].main.temp_max,
-          minTemp: weatherArray.list[i].main.temp_min
+          weather: weatherArray.list[i].weather,
+          main: weatherArray.list[i].main,
+          wind: weatherArray.list[i].wind,
+          day: this.dayName
         };
       this.cityForecast.push(temporary);
     }
+    console.log(this.cityForecast);
     return this.cityForecast
   }
 }
