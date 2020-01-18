@@ -22,10 +22,9 @@ export class ViewComponent implements OnInit {
     this.weatherId = id;
     this.day = day;
     this.cityForecast = this.WeatherService.getCityForecast();
-    console.log(this.weatherId,this.cityForecast);
   }
 
   newChange(): void {
     this.router.navigateByUrl('home');
-}
+  }
 }

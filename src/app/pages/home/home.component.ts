@@ -3,6 +3,7 @@ import { WeatherService } from 'src/app/services/weather.service';
 import { environment } from 'src/environments/environment';
 import { Weather } from 'src/app/interfaces/weather';
 import { CityPipePipe } from 'src/app/pipes/city-pipe.pipe'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
   forecastWeather: Weather[] = [];
   idForecast: Weather[] = [];
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, private router: Router) { }
 
   ngOnInit() {
     this.getCurrentLocation();
@@ -45,7 +46,6 @@ export class HomeComponent implements OnInit {
             this.weather = data;
             this.currenDate = new Date()
             this.currentDay = environment.days[this.currenDate.getDay()];
-            console.log(this.weather);
           });
         }
         catch(error) {
@@ -56,7 +56,6 @@ export class HomeComponent implements OnInit {
           this.count = 0;
             this.weatherService.getWeatherDataByCoords(environment.apiUrl+'/forecast', this.lat, this.lon, this.count).subscribe(data => {
             this.forecast = data;
-            console.log(this.forecast);
             this.forecastWeather = this.getfourDays(this.forecast);
             this.weatherService.setCityForecast(this.forecastWeather);
           });
@@ -87,9 +86,13 @@ export class HomeComponent implements OnInit {
       this.count = 0;
       this.weatherService.getWeatherDataByCoordsAndId(environment.apiUrl+'/forecast', this.count, id).subscribe(data => {
         this.cityWeather = data;
+        this.weather = this.cityWeather.list[0];
+        this.weather.name = this.cityWeather.city.name;
+        this.weather.sys.country = this.cityWeather.city.country;
         this.idForecast = this.getfourDays(this.cityWeather);
         this.weatherService.setCityForecast(this.idForecast);
         this.forecastWeather = this.idForecast;
+        this.closeNav();
       });
     }
     catch(error) {
@@ -115,7 +118,6 @@ export class HomeComponent implements OnInit {
         };
       this.cityForecast.push(temporary);
     }
-    console.log(this.cityForecast);
     return this.cityForecast
   }
 
