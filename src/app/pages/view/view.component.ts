@@ -10,13 +10,16 @@ import {Weather} from 'src/app/interfaces/weather';
 })
 export class ViewComponent implements OnInit {
   weatherId;
+  day;
   cityForecast: Weather[] = [];
 
   constructor(private route: ActivatedRoute, private WeatherService: WeatherService) { }
 
   ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
+    let day = parseInt(this.route.snapshot.paramMap.get('day'));
     this.weatherId = id;
+    this.day = day;
     this.cityForecast = this.WeatherService.getCityForecast();
     console.log(this.weatherId,this.cityForecast);
   }

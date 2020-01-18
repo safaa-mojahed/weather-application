@@ -5,4 +5,6 @@ export interface Weather {
     main: object;
     wind: object;
     day: string;
+    sys: object;
+    city: object;
 }

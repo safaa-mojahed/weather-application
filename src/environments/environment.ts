@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'https://api.openweathermap.org/data/2.5',
-  apiKey: 'bd1b8f5226a89b2c5ad19950c6764993'
+  apiKey: 'bd1b8f5226a89b2c5ad19950c6764993',
+  days: ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
 };
 
 /*

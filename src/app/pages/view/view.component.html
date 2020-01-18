@@ -1,5 +1,6 @@
 <div *ngFor="let weather of cityForecast">
-    <div *ngIf = "weatherId == weather.id">
-        <p>{{weather.date}}</p>
+    <div class="flex-canter" *ngIf = "weatherId == weather.id">
+        <p class="header">{{ weather?.name}}, {{ weather?.sys.country}}</p>
+
     </div>
 </div>

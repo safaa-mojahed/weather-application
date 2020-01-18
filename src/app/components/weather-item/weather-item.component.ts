@@ -11,7 +11,7 @@ export class WeatherItemComponent implements OnInit {
   constructor(private router: Router) { }
 
   onSelect(weather) {
-    this.router.navigate(['/home', weather.id])
+    this.router.navigate(['/home', weather.id, weather.day])
   }
 
   ngOnInit() {

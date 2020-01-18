@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   cityForecast: Weather[] = [];
   forecastWeather: Weather[] = [];
   idForecast: Weather[] = [];
-  days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
   constructor(private weatherService: WeatherService) { }
 
@@ -45,7 +44,7 @@ export class HomeComponent implements OnInit {
           this.weatherService.getWeatherDataByCoords(environment.apiUrl+'/weather', this.lat, this.lon, this.count).subscribe(data => {
             this.weather = data;
             this.currenDate = new Date()
-            this.currentDay = this.days[this.currenDate.getDay()];
+            this.currentDay = environment.days[this.currenDate.getDay()];
             console.log(this.weather);
           });
         }
@@ -57,6 +56,7 @@ export class HomeComponent implements OnInit {
           this.count = 0;
             this.weatherService.getWeatherDataByCoords(environment.apiUrl+'/forecast', this.lat, this.lon, this.count).subscribe(data => {
             this.forecast = data;
+            console.log(this.forecast);
             this.forecastWeather = this.getfourDays(this.forecast);
             this.weatherService.setCityForecast(this.forecastWeather);
           });
@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
     this.cityForecast = [];
     for(let i = 8; i<40; i+=8) {
       this.date = new Date(weatherArray.list[i].dt_txt);
-      this.dayName = this.days[this.date.getDay()];
+      this.dayName = environment.days[this.date.getDay()];
       const temporary:  Weather =
         {
           id: i/8,
@@ -108,7 +108,9 @@ export class HomeComponent implements OnInit {
           weather: weatherArray.list[i].weather,
           main: weatherArray.list[i].main,
           wind: weatherArray.list[i].wind,
-          day: this.dayName
+          day: this.dayName,
+          sys: weatherArray.list[i].sys,
+          city: weatherArray.city
         };
       this.cityForecast.push(temporary);
     }
