@@ -1,6 +1,51 @@
 <div *ngFor="let weather of cityForecast">
-    <div class="flex-canter" *ngIf = "weatherId == weather.id">
-        <p class="header">{{ weather?.name}}, {{ weather?.sys.country}}</p>
-
+    <div *ngIf = "weatherId == weather.id">
+        <div class="flex-center">
+            <p class="header">{{ weather?.city.name}}, {{ weather?.city.country}}</p>
+            <p class="sub-header">{{ weather?.weather[0].description }}</p>
+            <p class="sub-header">{{day}}</p>
+        </div>
+        <div class="temp current-weather-details flex-row">
+            <div class="center">
+                <p>Min Temp</p>
+                <p>{{weather?.main.temp_min}}&#176;F</p>
+            </div>
+            <div class="center">
+                <p>Temp</p>
+                <p>{{weather?.main.temp}}&#176;F</p>
+            </div>
+            <div class="center">
+                <p>Max Temp</p>
+                <p>{{weather?.main.temp_max}}&#176;F</p>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="center">
+                <p>Feels Like</p>
+                <p>{{weather?.main.feels_like}}&#176;</p>
+            </div>
+            <div class="center">
+                <p>Humidity</p>
+                <p>{{weather?.main.humidity}}%</p>
+            </div>
+            <div class="center">
+                <p>Pressure</p>
+                <p>{{weather?.main.pressure}} mb</p>
+            </div>
+        </div>
+        <div class="current-weather-details flex-row">
+            <div class="center">
+                <p>Wind Speed</p>
+                <p>{{weather?.wind.speed}} MPH</p>
+            </div>
+            <div class="center">
+                <p>Wind Deg</p>
+                <p>{{weather?.wind.deg}} MPH</p>
+            </div>
+            <div class="center">
+                <p>Sea Level</p>
+                <p>{{weather?.main.sea_level}}</p>
+            </div>
+        </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WeatherService } from 'src/app/services/weather.service';
 import {Weather} from 'src/app/interfaces/weather';
+import { parse } from 'querystring';
 
 @Component({
   selector: 'app-view',
@@ -17,7 +18,7 @@ export class ViewComponent implements OnInit {
 
   ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
-    let day = parseInt(this.route.snapshot.paramMap.get('day'));
+    let day = (this.route.snapshot.paramMap.get('day')).toString();
     this.weatherId = id;
     this.day = day;
     this.cityForecast = this.WeatherService.getCityForecast();

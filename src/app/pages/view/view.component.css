@@ -1,0 +1,32 @@
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    align-items: center;
+    margin-top: 14%;
+}
+
+p {
+    margin: 10px;
+    padding: 0px 15px;
+}
+
+.header  {
+    font-size: 45px;
+}
+
+.sub-header {
+    font-size: 35px;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 10%;
+}
+
+.center {
+    text-align: center;
+    font-size: 18px;
+}
