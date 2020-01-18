@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class WeatherItemComponent implements OnInit {
   @Input('weather') weather: object;
-
   constructor(private router: Router) { }
 
   onSelect(weather) {
@@ -16,6 +15,7 @@ export class WeatherItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    // console.log(this.weather.icon);
   }
 
 }

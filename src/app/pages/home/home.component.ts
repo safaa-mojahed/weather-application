@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   cityForecast: Weather[] = [];
   forecastWeather: Weather[] = [];
   idForecast: Weather[] = [];
-  days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 
   constructor(private weatherService: WeatherService) { }
 

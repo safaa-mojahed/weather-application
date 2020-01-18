@@ -1,0 +1,25 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-row p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+tr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day {
+    width: 30px;
+}
+
+img {
+    width: 80px;
+    height: 60px;
+}

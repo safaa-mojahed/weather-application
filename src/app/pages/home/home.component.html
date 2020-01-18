@@ -1,12 +1,4 @@
-<p>home works!</p>
-<h1>the weather in {{ weather?.name }}, {{ weather?.sys.country }}</h1>
-<h1>{{ weather?.main.temp }}  &#176;F</h1>
-<p>{{ weather?.weather[0].description }}</p>
-<p>{{ weather?.main.temp_min }}</p>
-<p>{{ weather?.main.temp_max }}</p>
-
-
-<h1>forecast</h1>
+<!-- 
 <div *ngFor="let weather of cityForecast">
     <app-weather-item [weather] = "weather"></app-weather-item>
 </div>
@@ -17,4 +9,37 @@
 <h1>all cities</h1> 
 <div *ngFor = "let city of aroundCities?.list | cityPipe:cityName">
     <p (click)="onCityClick(city.id)" >{{city.name}}</p>
+</div> -->
+<div class="root"> 
+    <div class="today-weather">
+        <div class="menu">
+            <img src="../../../assets/menu.png" alt="menu">
+        </div>
+        <div class="current-location-temp flex-center">
+            <p class="header">{{ weather?.name}}, {{ weather?.sys.country}}</p>
+            <p class="sub-header">{{currentDay}}</p>
+            <p class="header">{{ weather?.main.temp }}&#176;  </p>
+            <p class="sub-header">{{ weather?.main.temp_min }}&#176; / {{ weather?.main.temp_max }}&#176;</p>
+            <p class="sub-header">{{ weather?.weather[0].description }}</p>
+        </div>
+        <div class="current-weather-details flex-row">
+            <div class="center">
+                <p>Humidity</p>
+                <p>{{weather?.main.humidity}}%</p>
+            </div>
+            <div class="center">
+                <p>Wind</p>
+                <p>{{weather?.wind.speed}} MPH</p>
+            </div>
+            <div class="center">
+                <p>Pressure</p>
+                <p>{{weather?.main.pressure}} mb</p>
+            </div>
+        </div>
+    </div>
+    <div class="week-weather">
+        <div *ngFor="let weather of forecastWeather">
+            <app-weather-item [weather] = "weather"></app-weather-item>
+        </div>
+    </div>
 </div>

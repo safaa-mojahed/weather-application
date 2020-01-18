@@ -1,5 +1,10 @@
 <div (click) = "onSelect(weather)">
-    <p>{{weather.main.maxTemp}}</p>
-    <p>{{weather.maxTemp}}</p>
-    <p>{{weather.minTemp}}</p>
+    <table class="flex-row">
+        <tr>
+            <td class="day">{{weather.day}}</td>
+            <td><img src="http://openweathermap.org/img/wn/{{weather.weather[0].icon}}.png" alt="weather icon"></td>
+            <td>{{weather.main.temp_min}}&#176;</td>
+            <td>{{weather.main.temp_max}}&#176;</td>    
+        </tr>
+    </table>
 </div>
