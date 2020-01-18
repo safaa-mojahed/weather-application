@@ -1,15 +1,18 @@
-<!-- 
-<form>
-    <label for="cities">search by city name</label>
-    <input type="text" [(ngModel)] = "cityName" name="cityName">
-</form>
-<h1>all cities</h1> 
-<div *ngFor = "let city of aroundCities?.list | cityPipe:cityName">
-    <p (click)="onCityClick(city.id)" >{{city.name}}</p>
-</div> -->
+
 <div class="root"> 
     <div class="today-weather">
-        <div class="menu">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+            <form>
+                <label for="cities">search by city name</label>
+                <input type="text" [(ngModel)] = "cityName" name="cityName">
+            </form>
+            <h1>all cities</h1> 
+            <div *ngFor = "let city of aroundCities?.list | cityPipe:cityName">
+                <p (click)="onCityClick(city.id)" >{{city.name}}</p>
+            </div>
+          </div>
+        <div class="menu" style="font-size:30px;cursor:pointer" (click)="openNav()">
             <img src="../../../assets/menu.png" alt="menu">
         </div>
         <div class="current-location-temp flex-center">

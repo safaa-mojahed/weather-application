@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WeatherService } from 'src/app/services/weather.service';
 import {Weather} from 'src/app/interfaces/weather';
 import { parse } from 'querystring';
@@ -14,7 +14,7 @@ export class ViewComponent implements OnInit {
   day;
   cityForecast: Weather[] = [];
 
-  constructor(private route: ActivatedRoute, private WeatherService: WeatherService) { }
+  constructor(private route: ActivatedRoute, private WeatherService: WeatherService, private router: Router) { }
 
   ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -24,4 +24,8 @@ export class ViewComponent implements OnInit {
     this.cityForecast = this.WeatherService.getCityForecast();
     console.log(this.weatherId,this.cityForecast);
   }
+
+  newChange(): void {
+    this.router.navigateByUrl('home');
+}
 }

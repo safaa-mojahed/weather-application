@@ -1,5 +1,8 @@
 <div *ngFor="let weather of cityForecast">
     <div *ngIf = "weatherId == weather.id">
+        <div class="arrow" style="font-size:30px;cursor:pointer" (click) = "newChange()">
+            <span style="color: #ffffff;">&rarr;</span>
+        </div>
         <div class="flex-center">
             <p class="header">{{ weather?.city.name}}, {{ weather?.city.country}}</p>
             <p class="sub-header">{{ weather?.weather[0].description }}</p>

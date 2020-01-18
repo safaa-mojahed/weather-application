@@ -30,3 +30,9 @@ p {
     text-align: center;
     font-size: 18px;
 }
+
+.arrow {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+}

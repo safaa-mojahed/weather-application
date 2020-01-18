@@ -118,4 +118,12 @@ export class HomeComponent implements OnInit {
     console.log(this.cityForecast);
     return this.cityForecast
   }
+
+  openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+  }
+
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
 }
