@@ -9,5 +9,5 @@ body, html {
     margin: 0px;
     padding: 0px;
     background-image: url("assets/background.jpg");
-    overflow: hidden;
+    overflow: scroll;
 } 
