@@ -89,6 +89,7 @@ export class HomeComponent implements OnInit {
         this.cityWeather = data;
         this.idForecast = this.getfourDays(this.cityWeather);
         this.weatherService.setCityForecast(this.idForecast);
+        this.forecastWeather = this.idForecast;
       });
     }
     catch(error) {
