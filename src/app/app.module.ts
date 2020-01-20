@@ -12,22 +12,22 @@ import { PipesModule } from 'src/app/pipes/pipes.module'
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ViewComponent,
-    WeatherItemComponent,
-    LoginFormComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    PipesModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		ViewComponent,
+		WeatherItemComponent,
+		LoginFormComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HttpClientModule,
+		FormsModule,
+		PipesModule,
+		ReactiveFormsModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

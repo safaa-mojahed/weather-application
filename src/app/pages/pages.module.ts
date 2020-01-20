@@ -11,12 +11,12 @@ import { LoginFormComponent } from './login-form/login-form.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ViewComponent, WeatherItemComponent, LoginFormComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    PipesModule
-  ]
+	declarations: [HomeComponent, ViewComponent, WeatherItemComponent, LoginFormComponent],
+	imports: [
+		CommonModule,
+		RouterModule,
+		FormsModule,
+		PipesModule
+	]
 })
 export class PagesModule { }
