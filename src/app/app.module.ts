@@ -7,8 +7,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { ViewComponent } from './pages/view/view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherItemComponent } from './components/weather-item/weather-item.component';
-import { FormsModule} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { PipesModule } from 'src/app/pipes/pipes.module'
+import { LoginFormComponent } from './pages/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,15 @@ import { PipesModule } from 'src/app/pipes/pipes.module'
     HomeComponent,
     ViewComponent,
     WeatherItemComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    PipesModule
+    PipesModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
