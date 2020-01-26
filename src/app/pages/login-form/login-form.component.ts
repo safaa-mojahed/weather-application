@@ -19,16 +19,16 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength[10], Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}')]),
+      password : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}')]),
     });
   }
 
   passwordError() {
     return this.password.hasError('minlength') ? 'Your password is too short.' :
+    this.password.hasError('maxlenth') ? 'your password is too long':
       this.password.hasError('pattern') ? 'Your password must have one uppercase letter, one lowercase letter, one number and one non alphanumeric character.' :
         ' ';
   }
-
 
   emailError() {
     return this.email.hasError('required') ? 'You must enter a value.' :
