@@ -15,7 +15,7 @@ export class LoginFormComponent implements OnInit {
   public password: FormControl;
 
   constructor(private weatherService: WeatherService) {
-    console.log(this.password);
+    this.revert;
   }
 
   passwordError() {
@@ -40,12 +40,15 @@ export class LoginFormComponent implements OnInit {
     e.preventDefault();;
     let email = e.target.elements[0].value;
     let password = e.target.elements[1].value;
-    this.weatherService.authentic(email, password);
+    let isLogged =   this.weatherService.authentic(email, password);
+    if(!isLogged) {
+      console.log("not logged")
+      this.loginForm.reset();
+    }
   }
 
 
   ngOnInit() {
-    console.log(this.password);
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}')]),
