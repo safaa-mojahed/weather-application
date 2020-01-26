@@ -3,16 +3,32 @@
         <h1>Login</h1>
     </div>
     <div class="login-form">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="checkoutForm" (ngSubmit)="loginUser($event)">
             <div>
                 <label for="email">Email</label>
-                <input type="email" formControlName="email">
+                <input  required type="email" formControlName="email">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="name.errors.required">
+                    email is required.
+                    </div>
+                </div>
             </div>
             <div>
                 <label for="Password">Password</label>
-                <input type="password" formControlName="password">
+                <input  required minlength="6" maxlength="10" type="password" formControlName="password">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="password.errors.required">
+                    password is required.
+                    </div>
+                    <div *ngIf="password.errors.minlength">
+                    password must be at least 6 characters long.
+                    </div>
+                    <div *ngIf="password.errors.maxlength">
+                    password must be at most 10 characters long.
+                    </div>
+                </div>
+                <button class="button" type="submit">login</button>
             </div>
-            <button class="button" type="submit">login</button>
         </form>
     </div>
 </div>

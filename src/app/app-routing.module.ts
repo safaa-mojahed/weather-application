@@ -3,16 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { ViewComponent } from './pages/view/view.component';
-
+import {AuthenticateGuard} from 'src/app/guards/authenticate.guard';
 
 const routes: Routes = [
 	{
 		path: 'home',
-		component: HomeComponent
+		component: HomeComponent,
+		canActivate: [AuthenticateGuard]
 	},
 	{
 		path: 'home/:id/:day',
-		component: ViewComponent
+		component: ViewComponent,
+		canActivate: [AuthenticateGuard]
 	},
 	{
 		path: '',

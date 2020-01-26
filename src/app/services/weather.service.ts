@@ -2,14 +2,18 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Weather } from 'src/app/interfaces/weather';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class WeatherService {
 	cityForecast: Weather[] = [];
+	isLogged;
 
-	constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient, private router: Router) { 
+		this.isLogged = false;
+	}
 
 	getWeatherDataByCoords(url, lat, lon, count) {
 		let params = new HttpParams()
@@ -49,5 +53,16 @@ export class WeatherService {
 	}
 	getCityForecast() {
 		return this.cityForecast;
+	}
+
+	authentic(username, password) {
+		if(username == 'admin@pseu.com' && password == 'Admin123@') {
+			this.isLogged = true;
+			this.router.navigate(['home']);
+		}
+	}
+
+	getIsLogged() {
+		return this.isLogged;
 	}
 }

@@ -10,6 +10,7 @@ import { WeatherItemComponent } from './components/weather-item/weather-item.com
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { PipesModule } from 'src/app/pipes/pipes.module'
 import { LoginFormComponent } from './pages/login-form/login-form.component';
+import { AuthenticateGuard } from './guards/authenticate.guard';
 
 @NgModule({
 	declarations: [
@@ -25,9 +26,9 @@ import { LoginFormComponent } from './pages/login-form/login-form.component';
 		HttpClientModule,
 		FormsModule,
 		PipesModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
 	],
-	providers: [],
+	providers: [AuthenticateGuard],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
