@@ -23,6 +23,19 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
+  passwordError() {
+    return this.password.hasError('minlength') ? 'Your password is too short.' :
+      this.password.hasError('pattern') ? 'Your password must have one uppercase letter, one lowercase letter, one number and one non alphanumeric character.' :
+        ' ';
+  }
+
+
+  emailError() {
+    return this.email.hasError('required') ? 'You must enter a value.' :
+      this.email.hasError('email') ? 'Not a valid email. Please read the field again.' :
+        ' ';
+  }
+
   revert() {
     this.loginForm.reset();
   }
