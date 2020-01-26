@@ -7,7 +7,7 @@
             <div>
                 <label for="email">Email</label>
                 <input  required type="email" formControlName="email">
-                 <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"> 
+                 <div *ngIf="email?.invalid"> 
                     {{emailError()}}
                 </div>
             </div>

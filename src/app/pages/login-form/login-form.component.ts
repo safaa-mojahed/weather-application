@@ -11,16 +11,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
-  email:  FormControl;
-  password: FormControl;
+  public email:  FormControl;
+  public password: FormControl;
 
-  constructor(private weatherService: WeatherService) {}
-
-  ngOnInit() {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}')]),
-    });
+  constructor(private weatherService: WeatherService) {
+    console.log(this.password);
   }
 
   passwordError() {
@@ -41,10 +36,20 @@ export class LoginFormComponent implements OnInit {
   }
 
   loginUser(e) {
+    console.log(this.loginForm.value);
     e.preventDefault();;
-    let username = e.target.elements[0].value;
+    let email = e.target.elements[0].value;
     let password = e.target.elements[1].value;
-    this.weatherService.authentic(username, password);
+    this.weatherService.authentic(email, password);
+  }
+
+
+  ngOnInit() {
+    console.log(this.password);
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}')]),
+    });
   }
 
 }
