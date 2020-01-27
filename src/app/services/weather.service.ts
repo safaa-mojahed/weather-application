@@ -56,7 +56,7 @@ export class WeatherService {
 	}
 
 	authentic(username, password) {
-		if(username == 'admin@pseu.com' && password == 'Admin123@') {
+		if(username == 'admin@pseu.edu' && password == 'Admin123@') {
 			this.isLogged = true;
 			this.router.navigate(['home']);
 			return true;

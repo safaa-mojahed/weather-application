@@ -18,21 +18,22 @@ export class LoginFormComponent  {
   }
   
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email, Validators.pattern("/^[A-Za-z0-9._%+-]+@pseu.com$/")]),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@pseu+.edu")]),
     password : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(10), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,}')]),
   });
 
   passwordError() {
-    return this.loginForm.controls.password.hasError('minlength') ? 'Your password is too short.' :
+    return this.loginForm.controls.password.hasError('required') ? 'You must enter a value.' :
+    this.loginForm.controls.password.hasError('minlength') ? 'Your password is too short.' :
     this.loginForm.controls.password.hasError('maxlenth') ? 'your password is too long':
     this.loginForm.controls.password.hasError('pattern') ? 'Your password must have one uppercase letter, one lowercase letter, one number and one non alphanumeric character.' :
         ' ';
   }
 
   emailError() {
-    console.log(this.email);
     return this.loginForm.controls.email.hasError('required') ? 'You must enter a value.' :
       this.loginForm.controls.email.hasError('email') ? 'Not a valid email. Please read the field again.' :
+      this.loginForm.controls.email.hasError('pattern') ? 'your email must be in @pseu.edu domain name.' :
         ' ';
   }
 
