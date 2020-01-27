@@ -15,7 +15,7 @@
                 <label for="Password">Password</label>
                 <input  required minlength="6" maxlength="10" type="password" formControlName="password">
                 <div *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
-                    
+                    {{passwordError()}}
                 </div>
                 <button class="button" type="submit">login</button>
             </div>
