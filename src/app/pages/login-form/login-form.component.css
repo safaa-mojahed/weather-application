@@ -1,3 +1,44 @@
 input {
     color: black;
+    width: 100%;
+    border-radius: 30px;
+    padding: 11px;
+    font-weight: bold;
+    font-size: 17px;
+    outline: none;
+    margin: 20px 0px;
+    cursor: text;
+}
+
+
+.form-header {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-header h1 {
+    margin-top: 40%;
+}
+
+.login-form {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+}
+
+label {
+    padding: 20px;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+}
+
+.login-button button {
+    font-size: 25px;
+    cursor: pointer;
 }

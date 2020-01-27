@@ -49,8 +49,8 @@ export class LoginFormComponent  {
     let password = this.loginForm.controls.password;
     let isLogged = this.weatherService.authentic(email, password);
     if(!isLogged) {
-     console.log("not logged")
-     this.loginForm.reset();
+      console.log("not logged")
+      this.loginForm.reset();
     }
   }
 

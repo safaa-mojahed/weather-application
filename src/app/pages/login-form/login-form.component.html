@@ -1,23 +1,25 @@
 <div class="root">
-    <div class="fprm-header">
+    <div class="form-header">
         <h1>Login</h1>
     </div>
     <div class="login-form">
         <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-            <div>
-                <label for="email">Email</label>
-                <input  required type="email" formControlName="email">
+            <label for="email">Email</label>
+            <div class="email-field ">
+                <input class="input" required type="email" formControlName="email">
                  <div *ngIf="!loginForm.controls.email.valid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)"> 
                     {{emailError()}}
                 </div>
             </div>
-            <div>
-                <label for="Password">Password</label>
-                <input  required minlength="6" maxlength="10" type="password" formControlName="password">
+            <label for="Password">Password</label>
+            <div class="password-field ">
+                <input class="input" required minlength="6" maxlength="10" type="password" formControlName="password">
                 <div *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
                     {{passwordError()}}
                 </div>
-                <button class="button" type="submit">login</button>
+                <div class="login-button">
+                    <button class="button" type="submit">login</button>
+                </div>
             </div>
         </form>
     </div>
