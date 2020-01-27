@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
 import { environment } from 'src/environments/environment';
 import { Weather } from 'src/app/interfaces/weather';
@@ -11,8 +11,19 @@ import { Router } from '@angular/router';
 	styleUrls: ['./home.component.css'],
 })
 
+export class HomeComponent implements OnInit{
+	@HostListener('window:scroll', ['$event']) // for window scroll events
+	onScroll(event) {
+		if(this.formElementRef.nativeElement.scrollTop > 10) {
+			this.labelElementRef.nativeElement.classList.add('shrink');
+			this.inputElementRef.nativeElement.classList.add('shrink');
+		}
+		if(this.formElementRef.nativeElement.scrollTop < 80) {
+			this.labelElementRef.nativeElement.classList.remove('shrink');
+			this.inputElementRef.nativeElement.classList.remove('shrink');
+		}
+	}
 
-export class HomeComponent implements OnInit {
 	lat;
 	lon;
 	count;
@@ -27,6 +38,9 @@ export class HomeComponent implements OnInit {
 	cityForecast: Weather[] = [];
 	forecastWeather: Weather[] = [];
 	idForecast: Weather[] = [];
+	@ViewChild('formRef', { static: true }) formElementRef: ElementRef;
+	@ViewChild('labelRef', { static: true }) labelElementRef: ElementRef;
+	@ViewChild('inputRef', { static: true }) inputElementRef: ElementRef;
 
 	constructor(private weatherService: WeatherService, private router: Router) { }
 
