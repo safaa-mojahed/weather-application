@@ -61,7 +61,7 @@ export class WeatherService {
 			this.router.navigate(['home']);
 			return true;
 		}
-		return false;
+		return false
 	}
 
 	getIsLogged() {

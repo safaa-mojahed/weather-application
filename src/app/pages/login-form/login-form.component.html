@@ -3,19 +3,19 @@
         <h1>Login</h1>
     </div>
     <div class="login-form">
-        <form [formGroup]="loginForm" (ngSubmit)="loginUser($event)">
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
             <div>
                 <label for="email">Email</label>
                 <input  required type="email" formControlName="email">
-                 <div *ngIf="email?.invalid"> 
+                 <div *ngIf="!loginForm.controls.email.valid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)"> 
                     {{emailError()}}
                 </div>
             </div>
             <div>
                 <label for="Password">Password</label>
                 <input  required minlength="6" maxlength="10" type="password" formControlName="password">
-                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
-                    {{passwordError()}}
+                <div *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+                    
                 </div>
                 <button class="button" type="submit">login</button>
             </div>
