@@ -4,13 +4,13 @@
             <div class="close">
                 <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
             </div>
-            <div class="flex-center">
-                <form>
+                <form class="header flex-center">
                     <label class="header" for="cities">search by city name</label>
                     <div class="padding">
                         <input type="text" [(ngModel)] = "cityName" name="cityName" placeholder="   Enter City Name">
                     </div>
                 </form>
+            <div id="city-list" class="flex-center">
                 <div *ngFor = "let city of aroundCities?.list | cityPipe:cityName" class="city" >
                     <p (click)="onCityClick(city.id)" >{{city.name}}</p>
                 </div>
