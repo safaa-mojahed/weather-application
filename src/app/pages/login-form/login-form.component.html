@@ -8,14 +8,18 @@
             <div class="email-field ">
                 <input class="input" required type="email" formControlName="email">
                  <div *ngIf="!loginForm.controls.email.valid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)"> 
-                    {{emailError()}}
+                    <div class="error">
+                        {{emailError()}}
+                    </div>
                 </div>
             </div>
             <label for="Password">Password</label>
             <div class="password-field ">
                 <input class="input" required minlength="6" maxlength="10" type="password" formControlName="password">
                 <div *ngIf="!loginForm.controls.password.valid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
-                    {{passwordError()}}
+                    <div class="error"> 
+                        {{passwordError()}}
+                    </div>
                 </div>
                 <div class="login-button">
                     <button class="button" type="submit">login</button>
