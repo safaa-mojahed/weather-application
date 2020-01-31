@@ -23,7 +23,7 @@ This project is a weather application, and is a mobile application, it has three
 
 3- details page:
 
-    - This page contain a more detailes about the weather such as the humidity and pressure...
+    - This page contain more detailes about the weather such as the humidity and pressure...
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
