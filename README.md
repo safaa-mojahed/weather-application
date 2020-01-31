@@ -1,5 +1,5 @@
 # WeatherApplication
-This project is a weather application, this application is a mobile application, it has three pages:
+This project is a weather application, and is a mobile application, it has three pages:
 1- login page:
     Username: admin@pseu.edu
     Password: Admin123@
