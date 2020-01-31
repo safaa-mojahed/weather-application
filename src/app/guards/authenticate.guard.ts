@@ -9,6 +9,7 @@ import {WeatherService} from 'src/app/services/weather.service';
 export class AuthenticateGuard implements CanActivate {
   constructor(private weatherService: WeatherService) {}
 
+  //the page only route to home page if the login process success.
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

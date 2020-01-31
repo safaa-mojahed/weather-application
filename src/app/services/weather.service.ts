@@ -15,6 +15,7 @@ export class WeatherService {
 		this.isLogged = false;
 	}
 
+	//get weather data based on the request in url.
 	getWeatherDataByCoords(url, lat, lon, count) {
 		let params = new HttpParams()
 			.set('lat', lat)
@@ -23,7 +24,6 @@ export class WeatherService {
 			.set('appid', environment.apiKey)
 			.set('cnt', count)
 
-
 		try {
 			return this.http.get(url, { params });
 		}
@@ -32,6 +32,7 @@ export class WeatherService {
 		}
 	}
 
+	//get weather data based on city id.
 	getWeatherDataByCoordsAndId(url, count, id) {
 		let params = new HttpParams()
 			.set('units', 'imperial')
@@ -39,7 +40,6 @@ export class WeatherService {
 			.set('cnt', count)
 			.set('id', id)
 
-
 		try {
 			return this.http.get(url, { params });
 		}
@@ -48,6 +48,7 @@ export class WeatherService {
 		}
 	}
 
+	//set and get for 4 days forecat weather data.
 	setCityForecast(cityForecast) {
 		this.cityForecast = cityForecast;
 	}
@@ -55,6 +56,7 @@ export class WeatherService {
 		return this.cityForecast;
 	}
 
+	//authenticate the username and password entered by the user in the login page
 	authentic(username, password) {
 		if(username == 'admin@pseu.edu' && password == 'Admin123@') {
 			this.isLogged = true;
@@ -64,6 +66,7 @@ export class WeatherService {
 		return false
 	}
 
+	//check isLogged value for authentication.
 	getIsLogged() {
 		return this.isLogged;
 	}

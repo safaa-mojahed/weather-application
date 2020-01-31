@@ -17,10 +17,12 @@ export class ViewComponent implements OnInit {
 	constructor(private route: ActivatedRoute, private WeatherService: WeatherService, private router: Router) { }
 
 	ngOnInit() {
+		//get id and day from url routing to get the specific element from forecast array.
 		let id = parseInt(this.route.snapshot.paramMap.get('id'));
 		let day = (this.route.snapshot.paramMap.get('day')).toString();
 		this.weatherId = id;
 		this.day = day;
+		//get data for 4 days weather forecast.
 		this.cityForecast = this.WeatherService.getCityForecast();
 	}
 
